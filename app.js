@@ -16,14 +16,14 @@ const tables = [];
 const waitingList = [];
 const numOfTables = 5;
 
-class Table {
-    constructor(name,phoneNumber,email,id){
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.id = id;
-    }
-}
+// class Table {
+//     constructor(name,phoneNumber,email,id){
+//         this.name = name;
+//         this.phoneNumber = phoneNumber;
+//         this.email = email;
+//         this.id = id;
+//     }
+// }
 
 // Return json for tables and waiting list
 app.get("/tables", function(req, res) {
@@ -38,10 +38,10 @@ app.get("/", function(req, res) {
     return res.sendFile(`${__dirname}/index.html`);
 });
 app.get("/tables", function(req, res) {
-    return res.sendFile("./tables.html");
+    return res.sendFile(`${__dirname}/tables.html`);
 });
-app.get("/reserve", function(req, res) {
-    return res.sendFile("./reserve.html");
+app.get("/reservations", function(req, res) {
+    return res.sendFile(`${__dirname}/reservations.html`);
 });
 
 // add a table
