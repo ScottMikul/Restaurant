@@ -52,8 +52,8 @@ app.post("/table", function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  table.routeName = table.name.replace(/\s+/g, "").toLowerCase();
-
+  // table.routeName = table.name.replace(/\s+/g, "").toLowerCase();
+console.log(table);
   if(tables.length>=numOfTables){
     waitingList.push(table);
   }
