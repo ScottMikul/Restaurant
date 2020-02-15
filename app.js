@@ -29,7 +29,7 @@ const numOfTables = 5;
 app.get("/api/tables", function(req, res) {
   return res.json(tables);
 });
-app.get("/api/waitingList", function(req, res) {
+app.get("/api/waitList", function(req, res) {
     return res.json(waitingList);
 });
 

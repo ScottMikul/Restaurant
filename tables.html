@@ -13,9 +13,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <script src="https://kit.fontawesome.com/85b973685b.js" crossorigin="anonymous"></script>
+<<<<<<< HEAD
 
     <link rel="stylesheet" href="styles.css">
 
+=======
+>>>>>>> ee0626133b81a310ca8da2f91bbbdef93eec5d26
 </head>
 
 <body>
@@ -27,8 +30,13 @@
                     <h3 class="text-center">Current reservations and wait list</h3>
                     
                     <div class="text-center">
+<<<<<<< HEAD
                     <a class="btn btn-danger btn-lg" href="/tables" role="button"><i class="far fa-credit-card"></i> Make reservation</a>
                     <a class="btn btn-light btn-lg" href="/index" role="button"><i class="fas fa-home"></i> Home</a>
+=======
+                    <a class="btn btn-danger btn-lg" href="/reservations" role="button">Make reservation</a>
+                    <a class="btn btn-light btn-lg" href="/" role="button"><i class="fas fa-home"></i></a>
+>>>>>>> ee0626133b81a310ca8da2f91bbbdef93eec5d26
                   </div>
                   </div>
                   <div class="row">
@@ -41,18 +49,20 @@
                             </div>
                             <div class="panel-body" id="tableSection">
                             <div class="well bg-light" id="tableWell-01">
-                                <h2><span class="label label-primary">1</span> | rest</h2>
+                                <h2 id="table0"><span class="label label-primary">1 |</span></h2>
                             </div>
                             <div class="well bg-light" id="tableWell-11">
-                                <h2><span class="label label-primary">2</span> | </h2>
+                                <h2 id="table1"><span class="label label-primary">2 |</span></h2>
                             </div>
                             <div class="well bg-light" id="tableWell-21">
-                                <h2
-                                ><span class="label label-primary">3</span> | <p>:)</p></h2>
+                                <h2 id="table2"><span class="label label-primary">3 |</span></h2>
                             </div>
                             <div class="well bg-light" id="tableWell-31">
-                                <h2><span class="label label-primary">4</span> | 987978</h2>
+                                <h2 id="table3"><span class="label label-primary">4 |</span></h2>
                             </div>
+                            <div class="well bg-light" id="tableWell-31">
+                                    <h2 id="table4"><span class="label label-primary">5 |</span></h2>
+                                </div>
                         </div>
                         </div>
         
@@ -80,3 +90,44 @@
 
                        
     </div>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <script>
+      
+  
+          var table1 = $("#table0");
+          var table2 = $("#table1");
+          var table3 = $("#table2");
+          var table4 = $("#table3");
+          var table5 = $("#table4");
+  
+        $.ajax({
+            url: "/api/tables",
+            type: "GET"
+        }).then(function(res){
+            console.log(res);
+            for(var i = 0; i < res.length; i++){
+                var q = i + 1;
+                $("#table" + i).text(q + " | " + res[i].id);
+            }
+        }
+        )
+        $.ajax({
+            url: "/api/waitlist",
+            type: "GET"
+        }).then(function(res){
+            console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                var newDiv = $("<div>");
+                var newHeader = $("<h4>");
+                newHeader.text(res[i].id);
+                newDiv.append(newHeader);
+                $("#waitlistSection").append(newDiv);
+
+            }
+        })
+  
+  </script>
+    </body>
