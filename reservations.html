@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <script src="https://kit.fontawesome.com/85b973685b.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                     
                     <div class="text-center">
                     <a class="btn btn-primary btn-lg" href="/tables" role="button">View Tables</a>
-                    <a class="btn btn-light btn-lg" href="/index" role="button">Hello</a>
+                    <a class="btn btn-light btn-lg" href="/index" role="button"><i class="fas fa-home"></i></a>
                   </div>
                   </div>
                   <div class="row">
@@ -34,7 +36,7 @@
                                     <h4 class="panel-title">Table Reservation</h4>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form">
+                                    <form role="form" id="form">
                                         <div class="form-group">
                                             <label input>Name</label>
                                             <input type="text" class="form-control" id="reserve-name">
@@ -51,7 +53,7 @@
                                                         <label input>Unique ID</label>
                                                         <input type="text" class="form-control" id="unique-id">
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                                                    <button class="btn btn-primary submit">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -59,3 +61,60 @@
 
 
     </div>
+
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+    
+    $(".submit").click(function(event) {
+        event.preventDefault();
+
+        var name = $("#reserve-name").val();
+        var phoneNumber = $("#phone-number").val();
+        var email = $("#email-address").val();
+        var id = $("#unique-id").val();
+
+
+
+    class Table {
+        constructor(name,phoneNumber,email,id){
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.id = id;
+}
+        
+    }
+    var table = new Table (name, phoneNumber, email, id);
+
+    $.ajax({
+        url: "/table",
+        type: "POST",
+        data: table
+    }).then(function(response){
+        console.log(...response);
+
+        document.getElementById("form").reset();
+
+        // $("#reserve-name").val("");
+        // $("#phone-number").val("");
+        // $("#email-address").val("");
+        // $("#unique-id").val("");
+    })
+})
+
+
+// class Table {
+//     constructor(name,phoneNumber,email,id){
+//         this.name = name;
+//         this.phoneNumber = phoneNumber;
+//         this.email = email;
+//         this.id = id;
+//     }
+// }
+
+</script>
+</body>
