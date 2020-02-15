@@ -1,0 +1,31 @@
+.label{
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+.well{
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.panel-default{
+    border-style: solid;
+    border-color: lightgray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+    
+  
+}
+.panel-heading{
+    border-bottom: solid;
+    border-color: lightgray;
+    padding-left: 15px;
+}
+.panel-body{
+    padding: 10px;
+}
